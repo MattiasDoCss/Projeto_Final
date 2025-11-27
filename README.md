@@ -1,10 +1,10 @@
-# 🖨️ Integração Java com Impressora Elgin i9
+# 🖨️ Integração C com Impressora Elgin i9
 ### *(Projeto Final Impressora)*
 ---
 
 ## 📘 Sobre o Projeto
 
-Este projeto foi desenvolvido por alunos com o objetivo de criar uma aplicação Java capaz de se comunicar com a impressora **Elgin i9**, utilizando comandos **ESC/POS**, testes de impressão e interação via porta de comunicação.  
+Este projeto foi desenvolvido por alunos com o objetivo de criar uma aplicação C capaz de se comunicar com a impressora **Elgin i9**, utilizando comandos **ESC/POS**, testes de impressão e interação via porta de comunicação.  
 O trabalho faz parte da disciplina de **Construção de Algoritmos e Programação**.
 
 ---
@@ -80,3 +80,4 @@ O trabalho faz parte da disciplina de **Construção de Algoritmos e Programaç�
 - Mateus Fernandes Mano
 - Murilo Monteiro Silva
 - Rafael Dos Santos Borges Casemiro
+
