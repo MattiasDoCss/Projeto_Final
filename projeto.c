@@ -199,9 +199,23 @@ static void imprimirTexto(void)
 
 static void imprimirQRCode(void)
 {
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
+    }
+
+    if(!ImpressaoQRCode){
+        printf("A funcao ImpressaoQRCode nao foi carregada.\n");
+        return;
+    }
     // TODO: solicitar conteudo do QRCode e chamar ImpressaoQRCode(texto, 6, 4)
-    ImpressaoQRCode("texto", 6, 4);
-    printf("QRcode impresso com sucesso.\n");
+    int retorno = ImpressaoQRCode("texto", 6, 4);
+    if(retorno != 0){
+        printf("Erro ao imprimir QRCode.\n", retorno);
+        return;
+    }
+    
+    printf("QRCode impresso com sucesso.\n");
     // incluir AvancaPapel e Corte no final
     AvancaPapel(2);
     Corte(2);
@@ -210,58 +224,21 @@ static void imprimirQRCode(void)
 
 static void imprimirCodigoBarras(void)
 {
-    // TODO: usar ImpressaoCodigoBarras(8, "{A012345678912", 100, 2, 3)
-    // incluir AvancaPapel e Corte no final
-	ImpressaoCodigoBarras(0, "12345678901", 80, 2, 1);
-    /*int TCB;//tipo de codigo de barras
-
-    switch()
-    {
-        case 0: // UPC-A
-            TCB = ImpressaoCodigoBarras(0, "12345678901", 80, 2, 1);
-            break;
-
-        case 1: // UPC-E
-            TCB = ImpressaoCodigoBarras(1, "123456", 80, 2, 1);
-            break;
-
-        case 2: // EAN-13 & JAN-13
-            TCB = ImpressaoCodigoBarras(2, "7891234567895", 80, 2, 2);
-            break;
-
-        case 3: // EAN-8 & JAN-8
-            TCB = ImpressaoCodigoBarras(3, "1234567", 80, 2, 2);
-            break;
-
-        case 4: // CODE 39
-            TCB = ImpressaoCodigoBarras(4, "ABC123$+-", 80, 2, 3);
-            break;
-
-        case 5: // ITF
-            TCB = ImpressaoCodigoBarras(5, "12345678", 80, 2, 4);
-            break;
-
-        case 6: // CODE BAR
-            TCB = ImpressaoCodigoBarras(6, "A1234B", 80, 2, 1);
-            break;
-
-        case 7: // CODE 93
-            TCB = ImpressaoCodigoBarras(7, "ABC123xyz", 80, 2, 2);
-            break;
-
-        case 8: // CODE 128
-            TCB = ImpressaoCodigoBarras(8, "{A}0123456789", 80, 2, 3);
-            break;
-
-        default:
-            printf("Tipo invalido");
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
     }
-    if (TCB == 0){
-        printf("Codigo de Barras impresso!\n");
+
+    if(!ImpressaoCodigoBarras){
+        printf("A funcao ImpressaoCodigoBarras nao foi carregada.\n");
+        return;
     }
-    else{
-        printf("Erro ao imprimir (codigo: %d)\n", TCB);
-    }*/
+    
+	int retorno = ImpressaoCodigoBarras(0, "12345678901", 80, 2, 1);
+	if(retorno != 0){
+        printf("Erro ao imprimir codigo de barras.\n", retorno);
+        return;
+    }
         
     AvancaPapel(2);
     Corte(2);
@@ -269,8 +246,21 @@ static void imprimirCodigoBarras(void)
 
 static void imprimirXMLSAT(void)
 {
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
+    }
+
+    if(!ImprimeXMLSAT){
+        printf("A funcao ImprimeXMLSAT nao foi carregada.\n");
+        return;
+    }
     // TODO: ler o arquivo ./XMLSAT.xml e enviar via ImprimeXMLSAT
-    ImprimeXMLSAT("path=C:/Users/murilo_monteiro/Desktop/Projeto_Final-main/XMLSAT.xml", 455);
+    int retorno = ImprimeXMLSAT("path=C:/Users/murilo_monteiro/Desktop/Projeto_Final-main/XMLSAT.xml", 455);
+    if(retorno != 0){
+        printf("Erro ao imprimir XMLSAT.\n", retorno);
+        return;
+    }
     // incluir AvancaPapel e Corte no final
     AvancaPapel(2);
     Corte(2);
@@ -278,9 +268,22 @@ static void imprimirXMLSAT(void)
 
 static void imprimirXMLCancelamentoSAT(void)
 {
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
+    }
+
+    if(!ImprimeXMLCancelamentoSAT){
+        printf("A funcao ImprimeXMLCancelamentoSAT nao foi carregada.\n");
+        return;
+    }
     // TODO: ler o arquivo ./CANC_SAT.xml e chamar ImprimeXMLCancelamentoSAT
-    ImprimeXMLCancelamentoSAT("path=C:/Users/murilo_monteiro/Desktop/Projeto_Final-main/CANC_SAT.xml","Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==",193);
-    // incluir AvancaPapel e Corte no final
+    int retorno = ImprimeXMLCancelamentoSAT("path=C:/Users/murilo_monteiro/Desktop/Projeto_Final-main/CANC_SAT.xml","Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==",193);
+    if(retorno != 0){
+        printf("Erro ao imprimir XML de cancelamento.\n", retorno);
+        return;
+    }
+	// incluir AvancaPapel e Corte no final
     AvancaPapel(2);
     Corte(2);
     
@@ -296,20 +299,68 @@ static void imprimirXMLCancelamentoSAT(void)
 
 static void abrirGavetaElginOpc(void)
 {
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
+    }
+
+    if(!AbreGavetaElgin){
+        printf("A funcao AbreGavetaElgin nao foi carregada.\n");
+        return;
+    }
     // TODO: chamar AbreGavetaElgin(1, 50, 50)
-    AbreGavetaElgin(1, 50, 50);
+    int retorno = AbreGavetaElgin(1, 50, 50);
+    
+    if(retorno != 0){
+        printf("Erro ao abrir gaveta Elgin.\n", retorno);
+        return;
+    }
+    
+    printf("Gaveta Elgin aberta com sucesso.");
 }
 
 static void abrirGavetaOpc(void)
 {
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
+    }
+
+    if(!AbreGaveta){
+        printf("A funcao AbreGaveta nao foi carregada.\n");
+        return;
+    }
     // TODO: chamar AbreGaveta(1, 5, 10)
-    AbreGaveta(1, 5, 10);
+    int retorno = AbreGaveta(1, 5, 10);
+    
+    if(retorno != 0){
+        printf("Erro ao abrir gaveta.\n", retorno);
+        return;
+    }
+    printf("Gaveta aberta com sucesso.");
+    
 }
 
 static void emitirSinalSonoro(void)
 {
+	if(!g_conectada){
+        printf("Nao ha conexao com a impressora.\n");
+        return;
+    }
+
+    if(!SinalSonoro){
+        printf("A funcao SinalSonoro nao foi carregada.\n");
+        return;
+    }
     // TODO: chamar SinalSonoro(4, 50, 5)
-    SinalSonoro(4, 50, 5);
+    int retorno = SinalSonoro(4, 50, 5);
+    
+    if(retorno != 0){
+        printf("Erro ao emitir um sinal sonoro.\n", retorno);
+        return;
+    }
+    
+    printf("Sinal sonoro emitido com sucesso.");
 }
 
 /* ======================= Funcao principal ======================= */
@@ -364,7 +415,8 @@ int main(void)
         	carregarFuncoes();
             abrirGavetaOpc();
             break;
-        case 10:carregarFuncoes();
+        case 10:
+			carregarFuncoes();
             emitirSinalSonoro();
             break;
         case 0:
