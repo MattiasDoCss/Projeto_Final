@@ -179,6 +179,7 @@ static void imprimirTexto(void)
     printf("Digite o texto a ser impresso: ");
     flush_entrada();
     fgets(texto, sizeof(texto), stdin);
+    AvancaPapel(2);
 
     int retorno = ImpressaoTexto(texto, 0, 0, 0);
 
@@ -256,7 +257,7 @@ static void imprimirXMLSAT(void)
         return;
     }
     // TODO: ler o arquivo ./XMLSAT.xml e enviar via ImprimeXMLSAT
-    int retorno = ImprimeXMLSAT("path=C:/Users/murilo_monteiro/Desktop/Projeto_Final-main/XMLSAT.xml", 455);
+    int retorno = ImprimeXMLSAT("path=./XMLSAT.xml", 455);
     if(retorno != 0){
         printf("Erro ao imprimir XMLSAT.\n", retorno);
         return;
@@ -278,7 +279,7 @@ static void imprimirXMLCancelamentoSAT(void)
         return;
     }
     // TODO: ler o arquivo ./CANC_SAT.xml e chamar ImprimeXMLCancelamentoSAT
-    int retorno = ImprimeXMLCancelamentoSAT("path=C:/Users/murilo_monteiro/Desktop/Projeto_Final-main/CANC_SAT.xml","Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==",193);
+    int retorno = ImprimeXMLCancelamentoSAT("path=./CANC_SAT.xml","Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==",193);
     if(retorno != 0){
         printf("Erro ao imprimir XML de cancelamento.\n", retorno);
         return;
