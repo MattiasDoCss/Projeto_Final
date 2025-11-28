@@ -73,11 +73,11 @@ O trabalho faz parte da disciplina de **Construção de Algoritmos e Programaç�
 ---
 
 ## 👥 Autores  
-*(em ordem alfabética)*
 
 - Igor Fernandes Almeida
 - Kauan Santos De Oliveira
 - Mateus Fernandes Mano
 - Murilo Monteiro Silva
 - Rafael Dos Santos Borges Casemiro
+
 
